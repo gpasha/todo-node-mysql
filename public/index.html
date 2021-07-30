@@ -22,7 +22,7 @@
 <div id="app" v-cloak>
   <v-app :dark="isDark">
     <v-toolbar color="blue darken-4" dark>
-      <!-- <v-toolbar-side-icon></v-toolbar-side-icon> -->
+      <v-app-bar-nav-icon></v-app-bar-nav-icon>
       <v-toolbar-title class="headline">Список дел</v-toolbar-title>
 
       <v-spacer></v-spacer>
@@ -70,26 +70,26 @@
                 Ваши задачи
               </v-subheader>
               <div v-for="(todo, i) in todos" :key="i">
-                <v-list-tile avatar>
-                  <v-list-tile-action>
+                <v-list-item avatar>
+                  <v-list-item-action>
                     <v-checkbox
                       v-if="!todo.done"
                       v-model="todo.done"
                       :dark="isDark"
                     ></v-checkbox>
-                  </v-list-tile-action>
-                  <v-list-tile-content>
-                    <v-list-tile-title :class="{done: todo.done}">
+                  </v-list-item-action>
+                  <v-list-item-content>
+                    <v-list-item-title :class="{done: todo.done}">
                       {{todo.title | capitalize}}
-                    </v-list-tile-title>
-                    <v-list-tile-sub-title>
+                    </v-list-item-title>
+                    <v-list-item-sub-title>
                       Добавлено в: {{todo.date | date}}
-                    </v-list-tile-sub-title>
-                  </v-list-tile-content>
+                    </v-list-item-sub-title>
+                  </v-list-item-content>
                   <v-btn icon ripple color="red" @click="removeTodo(todo.id)">
                     <v-icon class="white--text">close</v-icon>
                   </v-btn>
-                </v-list-tile>
+                </v-list-item>
               </div>
             </v-list>
           </v-card>
@@ -101,49 +101,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
-<script>
-  new Vue({
-    vuetify : new Vuetify(),
-    el: '#app',
-    data() {
-      return {
-        isDark: true,
-        show: true,
-        todoTitle: '',
-        todos: []
-      }
-    },
-    methods: {
-      addTodo() {
-        const title = this.todoTitle.trim()
-        if (!title) {
-          return
-        }
-        this.todos.push({
-          title: title,
-          id: Math.random(),
-          done: false,
-          date: new Date()
-        })
-        this.todoTitle = ''
-      },
-      removeTodo(id) {
-        this.todos = this.todos.filter(t => t.id !== id)
-      }
-    },
-    filters: {
-      capitalize(value) {
-        return value.toString().charAt(0).toUpperCase() + value.slice(1)
-      },
-      date(value) {
-        return new Intl.DateTimeFormat('ru-RU', {
-          year: 'numeric',
-          month: 'long',
-          day: '2-digit'
-        }).format(new Date(value))
-      }
-    }
-  })
-</script>
+<script src="./app.js"></script>
 </body>
 </html>
