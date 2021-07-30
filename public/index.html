@@ -75,6 +75,7 @@
                     <v-checkbox
                       v-if="!todo.done"
                       v-model="todo.done"
+                      @change="completeTodo(todo.id)"
                       :dark="isDark"
                     ></v-checkbox>
                   </v-list-item-action>
@@ -82,9 +83,10 @@
                     <v-list-item-title :class="{done: todo.done}">
                       {{todo.title | capitalize}}
                     </v-list-item-title>
-                    <v-list-item-sub-title>
-                      Добавлено в: {{todo.date | date}}
-                    </v-list-item-sub-title>
+                    <v-list-item-subtitle>
+                      Добавлено в: {{todo.createdAt | date(true)}}
+                      (Изменено в: {{todo.updatedAt | date(true)}})
+                    </v-list-item-subtitle>
                   </v-list-item-content>
                   <v-btn icon ripple color="red" @click="removeTodo(todo.id)">
                     <v-icon class="white--text">close</v-icon>

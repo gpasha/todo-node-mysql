@@ -6,6 +6,7 @@ const todosRouter = require('./routes/todos')
 const app = express()
 
 app.use(express.static(path.join(__dirname, 'public') ))
+app.use(express.json())
 app.use('/api/todos', todosRouter)
 
 
