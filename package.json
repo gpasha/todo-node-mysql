@@ -1,0 +1,23 @@
+{
+  "name": "todo-node-mysql",
+  "version": "1.0.0",
+  "description": "MySQL, Node.js, JS",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "MySQL",
+    "Node.js",
+    "JS"
+  ],
+  "author": "Pavel",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
